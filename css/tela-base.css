@@ -5,6 +5,8 @@
 body{
     font-family: 'Roboto', sans-serif;
     background-color: #FAFAFA;
+    display: flex;
+    justify-content: center;
 }
 
 header{
