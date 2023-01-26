@@ -95,72 +95,10 @@
         </div>
         <div class="perguntas hiden">
             <h2>Crie suas perguntas</h2>
-            <div class=" pergunta pergunta-1 selecionada" onclick="abrirInputPerguntas(this)">
-                <div class="pergunta-topo">
-                    <h2>Pergunta 1</h2>
-                    <img src="./imagens/Vector.png" alt="" class="icone-pergunta">
-                </div>
-                <div  class="input-perguntas">
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-                    <h2>Resposta correta</h2>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="text" placeholder="URL da imagem">
-                    <h2>Respostas incorretas</h2>
-                    <ul>
-                        <li>
-                            <input type="text" placeholder="Resposta incorreta 1">
-                            <input type="text" placeholder="URL da imagem 1">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <input type="text" placeholder="Resposta incorreta 2">
-                            <input type="text" placeholder="URL da imagem 2">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <input type="text" placeholder="Resposta incorreta 3">
-                            <input type="text" placeholder="URL da imagem 3">
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class=" pergunta pergunta-2" onclick="abrirInputPerguntas(this)">
-                <div class="pergunta-topo">
-                    <h2>Pergunta 2</h2>
-                    <img src="./imagens/Vector.png" alt="" class="icone-pergunta">
-                </div>
-                <div  class="input-perguntas hiden">
-                    <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cor de fundo da pergunta">
-                    <h2>Resposta correta</h2>
-                    <input type="text" placeholder="Resposta correta">
-                    <input type="text" placeholder="URL da imagem">
-                    <h2>Respostas incorretas</h2>
-                    <ul>
-                        <li>
-                            <input type="text" placeholder="Resposta incorreta 1">
-                            <input type="text" placeholder="URL da imagem 1">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <input type="text" placeholder="Resposta incorreta 2">
-                            <input type="text" placeholder="URL da imagem 2">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <input type="text" placeholder="Resposta incorreta 3">
-                            <input type="text" placeholder="URL da imagem 3">
-                        </li>
-                    </ul>
-                </div>
+            <div class="aba-perguntas">
             </div>
             
-            <button>Prosseguir pra criar níveis</button>
+            <button onclick="enviarPerguntasCriadas()">Prosseguir pra criar níveis</button>
         </div>
         <div class="niveis hiden ">
             <h2>Agora, decida os níveis!</h2>
