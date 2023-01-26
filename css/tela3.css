@@ -53,51 +53,53 @@ button{
     color: #BABABA;
 }
 
+.perguntas{
+    width: 100%;
+}
 
-.pergunta-fechada{
+.pergunta{
+    width: 100%;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    background-color: #FFFFFF;
+    margin-bottom: 24px;
+
+}
+
+.pergunta-topo{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding-left: 17px;
     padding-right: 24px;
     width: 100%;
-    height: 74px;
-    background-color: #FFFFFF;
-
-}
-
-.pergunta-fechada img{
     height: 23px;
-    width: 26;
 }
 
-.pergunta-fechada h2{
+.pergunta-topo img{
+    height: 23px;
+    width: 26px;
+}
+
+.pergunta-topo h2{
     font-size: 23px;
     font-weight: 700;
     color: #000000;
 }
 
-.pergunta-aberta{
+.input-perguntas{
     width: 100%;
-    background-color: #FFFFFF;
+    margin-top: 12px;
     padding-left: 17px;
 }
 
-.pergunta-aberta h2{
+.input-perguntas h2{
     margin-top: 27px;
     margin-bottom: 20px;
 }
 
-.pergunta-fechada{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 17px;
-    padding-right: 24px;
-    width: 100%;
-    height: 74px;
-}
 
-.pergunta-aberta input{
+
+.input-perguntas input{
     width: 564px;
     height: 46px;
     border: 1px solid #D1D1D1;
@@ -107,10 +109,6 @@ button{
     font-weight: 400;
     font-size: 19px;
     color: #BABABA;
-}
-
-.pergunta-aberta li{
-    margin-bottom: 20px;
 }
 
 .nivel{
