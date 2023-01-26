@@ -1,12 +1,12 @@
-.tela-2{
-   width: 100%;
-   max-width: 1440px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+.tela-2 {
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.tela-2 .banner{
+.tela-2 .banner {
     position: relative;
     margin-top: 69px;
     height: 227px;
@@ -14,82 +14,80 @@
     max-width: 1440px;
 }
 
-.tela-2 .banner img{
+.tela-2 .banner img {
     width: 100%;
     height: 100%;
 }
 
-.tela-2 .mask{
+.tela-2 .mask {
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color:#00000060;
+    background-color: #00000060;
 }
 
-.tela-2 .mask .titulo{
-font-size: 39px;
-font-weight: 400;
-line-height: 46px;
-letter-spacing: 0em;
-text-align: center;
+.tela-2 .mask .titulo {
+    font-size: 39px;
+    font-weight: 400;
+    line-height: 46px;
+    letter-spacing: 0em;
+    text-align: center;
 }
 
-.tela-2 .questBox{
- width: 100%;
-max-width: 759px;
-height: 676px;
-background-color: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-margin-top: 42px;
-padding: 35px;
-
+.tela-2 .questBox {
+    width: 100%;
+    max-width: 759px;
+    height: 676px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 42px;
+    padding: 35px;
 }
 
-.tela-2 .top{
+.tela-2 .top {
     width: 100%;
     height: 138px;
-    background-color:#434CA0;
+    background-color: #434CA0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.tela-2 .top h2{
-font-size: 23px;
-font-weight: 700;
-margin-bottom: 0;
-letter-spacing: 0em;
-text-align: center;
-color: #FFFFFF;
+.tela-2 .top h2 {
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 0;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
 }
 
-.tela-2 .card{
+.tela-2 .card {
     width: 48%;
     height: 240px;
     padding-top: 25px;
 }
 
-.tela-2 .card img{
+.tela-2 .card img {
     width: 100%;
     max-width: 350px;
     height: 175px;
     padding-bottom: 5px;
 }
 
-.tela-2 .card h3{
-font-size: 20px;
-font-weight: 700;
-line-height: 23px;
-letter-spacing: 0em;
-text-align: left;
-color: #000000;
-
+.tela-2 .card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #000000;
 }
 
-.tela-2 .alternativas{
+.tela-2 .alternativas {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -97,23 +95,85 @@ color: #000000;
     flex-wrap: wrap;
 }
 
-.tela-2 .alternativas  .certo h3{
+.tela-2 .alternativas .certo h3 {
     color: #009C22;
 
 }
 
-.tela-2 .alternativas .errado h3{
+.tela-2 .alternativas .errado h3 {
     color: #FF4B4B;
 }
 
-
-
-.tela-2 .resultado{
+.tela-2 .resultado {
     margin-top: 35px;
     width: 100%;
     padding: 18px;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-max-width: 759px;
-height: 676px;
+    max-width: 759px;
+    margin-bottom: 50px;
+
+}
+
+.tela-2 .percentualDeAcerto {
+    width: 100%;
+    background-color: #EC362D;
+    height: 99px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.tela-2 .percentualDeAcerto p {
+    color: #FFFFFF;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 27px;
+    letter-spacing: 0em;
+}
+
+.tela-2 .mid {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.tela-2 .mid img {
+    width: 48%;
+}
+
+.tela-2 .mid p {
+    width: 48%;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0em;
+}
+
+.tela-2 .reiniciar {
+    width: 260px;
+    height: 50px;
+    background-color: #EC362D;
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 21px;
+    color: #FFF5F4;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+}
+
+.tela-2 .voltarHome {
+    border-radius: 10px;
+    color: #818181;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-bottom: 20px;
 }
