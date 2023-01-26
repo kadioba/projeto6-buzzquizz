@@ -27,7 +27,39 @@
         <h1>BuzzQuizz</h1>
     </header>
     <div class="tela-1">
-        
+        <div class="container-quizzes-criados">
+            <h2>Você não criou nenhum quizz ainda :(</h2>
+            <button>Criar Quizz</button>
+        </div>
+        <div class="titulo">
+            <h3>Todos os Quizzes</h3>
+        </div>
+            <div class="container-todos-quizzes">
+                <div class="quizz">
+                    <img src="./imagens/simpsons.png">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+                <div class="quizz">
+                    <img src="./imagens/Rectangle 36.png">
+                    <p>O quanto você é de boas?</p>
+                </div>
+                <div class="quizz">
+                    <img src="./imagens/simpsons.png">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+                <div class="quizz">
+                    <img src="./imagens/simpsons.png">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+                <div class="quizz">
+                    <img src="./imagens/Rectangle 36.png">
+                    <p>O quanto você é de boas?</p>
+                </div>
+                <div class="quizz">
+                    <img src="./imagens/simpsons.png">
+                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                </div>
+        </div>
     </div>
     <div class="tela-2 hiden">
         <div class="banner">
@@ -36,29 +68,94 @@
             </div>
             <img class="" src="./imagens/Rectangle 34.png" alt="">
         </div>
+        <div class="questBox">
+          <div class="top">
+            <h2 class="pergunta">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h2>
+        </div>
+        <div class="alternativas">
+        
+        <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+        
+        <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+        
+        <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+        
+        <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div>
+        
+        </div>
+        </div>
 
         <div class="questBox">
+            <div class="top">
+              <h2 class="pergunta">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h2>
+          </div>
+          <div class="alternativas">
+          
+          <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+          
+          <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+          
+          <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+          
+          <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div>
+          
+          </div>
+          </div>
+        
 
-        </div>
     </div>
     <div class="tela-3 hiden">
-        <div class="info-quiz hiden">
+        <div class="info-quiz ">
             <h2>Comece pelo começo</h2>
             <div class="inputs-info">
-                <input type="text" placeholder="Título do seu quizz">
-                <input type="text" placeholder="URL da imagem do seu quizz">
-                <input type="text" placeholder="Quantidade de perguntas do quizz">
-                <input type="text" placeholder="Quantidade de níveis do quizz">
+                <input type="text" placeholder="Título do seu quizz" class="input-tiulo-criado">
+                <input type="url" placeholder="URL da imagem do seu quizz" class="input-url-imagem-criada">
+                <input type="number" placeholder="Quantidade de perguntas do quizz" class="input-numero-perguntas-criadas">
+                <input type="number" placeholder="Quantidade de níveis do quizz" class="input-numero-niveis-criados">
             </div>
-            <button  >Prosseguir pra criar perguntas</button>
+            <button onclick="enviarInfoQuizCriado()">Prosseguir pra criar perguntas</button>
         </div>
         <div class="perguntas hiden">
             <h2>Crie suas perguntas</h2>
-            <div class="pergunta-1">
-                <div class="pergunta-fechada hiden">
+            <div class="pergunta-1" onclick="abrirInputPerguntas(this)">
+                <div class="pergunta-fechada ">
                     <h2>Pergunta 1</h2>
+                    <img src="./imagens/Vector.png" alt="">
                 </div>
-                <div  class="pergunta-aberta">
+                <div  class="pergunta-aberta hidden">
+                    <h2>Pergunta 1</h2>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h2>Resposta correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+                    <h2>Respostas incorretas</h2>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 1">
+                            <input type="text" placeholder="URL da imagem 1">
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 2">
+                            <input type="text" placeholder="URL da imagem 2">
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 3">
+                            <input type="text" placeholder="URL da imagem 3">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pergunta-2 selecionado" onclick="abrirInputPerguntas(this)">
+                <div class="pergunta-fechada ">
+                    <h2>Pergunta 1</h2>
+                    <img src="./imagens/Vector.png" alt="">
+                </div>
+                <div  class="pergunta-aberta hidden">
                     <h2>Pergunta 1</h2>
                     <input type="text" placeholder="Texto da pergunta">
                     <input type="text" placeholder="Cor de fundo da pergunta">
@@ -88,7 +185,7 @@
             </div>
             <button>Prosseguir pra criar níveis</button>
         </div>
-        <div class="niveis hiden ">
+        <div class="niveis hiden">
             <h2>Agora, decida os níveis!</h2>
             <div class="nivel nivel-1">
                 <h2>Nível 1</h2>
@@ -99,7 +196,7 @@
             </div>
             <button>Finalizar Quizz</button>
         </div>
-        <div class="quiz-pronto ">
+        <div class="quiz-pronto hiden">
             <h2>Seu quizz está pronto!</h2>
             <div>
                 <img src="./imagens/Rectangle 34.png" alt="">
@@ -109,5 +206,11 @@
             <button>Voltar pra home</button>
         </div>
     </div>
+
+    <!-- Lunk que conecta o axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Link que puxa arquivo js -->
+    <script src="./javascript/script_tela3.js"></script>    
 </body>
 </html>  
