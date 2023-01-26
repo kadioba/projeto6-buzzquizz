@@ -33,6 +33,7 @@ function enviarInfoQuizCriado(){
     if(infoQuizValidos){
         document.querySelector(".info-quiz").classList.add("hiden");
         document.querySelector(".perguntas").classList.remove("hiden");
+        gerarInputPerguntas();
     }
 
     else{
@@ -41,9 +42,87 @@ function enviarInfoQuizCriado(){
 }
 
 function gerarInputPerguntas(){
+    const divPerguntas = document.querySelector(".perguntas");
+    divPerguntas.innerHTML = "";
+    let templatePergunta = "";
+
+    for(let i = 1; i <= numeroPerguntasCriadas; i++){
+        if(i == 1){
+            templatePergunta = `
+            <div class=" pergunta pergunta-${i} selecionada" onclick="abrirInputPerguntas(this)">
+                <div class="pergunta-topo">
+                    <h2>Pergunta ${i}</h2>
+                    <img src="./imagens/Vector.png" alt="" class="icone-pergunta hiden">
+                </div>
+                <div  class="input-perguntas">
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h2>Resposta correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+                    <h2>Respostas incorretas</h2>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 1">
+                            <input type="text" placeholder="URL da imagem 1">
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 2">
+                            <input type="text" placeholder="URL da imagem 2">
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 3">
+                            <input type="text" placeholder="URL da imagem 3">
+                        </li>
+                    </ul>
+                </div>
+            </div>`
+        }
+        else{
+            templatePergunta = `
+            <div class="pergunta pergunta-${i}" onclick="abrirInputPerguntas(this)">
+                <div class="pergunta-topo">
+                    <h2>Pergunta ${i}</h2>
+                    <img src="./imagens/Vector.png" alt="" class="icone-pergunta">
+                </div>
+                <div  class="input-perguntas hiden">
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
+                    <h2>Resposta correta</h2>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+                    <h2>Respostas incorretas</h2>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 1">
+                            <input type="text" placeholder="URL da imagem 1">
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 2">
+                            <input type="text" placeholder="URL da imagem 2">
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Resposta incorreta 3">
+                            <input type="text" placeholder="URL da imagem 3">
+                        </li>
+                    </ul>
+                </div>
+            </div>`
+        }
+        divPerguntas.innerHTML += templatePergunta;
+    }
 
 }
 
+// Função que controla o comportamento do input ao ser clicado
 function abrirInputPerguntas(divInputPergunta){
 
     const perguntaJaSelecionada = document.querySelector(".perguntas .selecionada");
@@ -51,11 +130,12 @@ function abrirInputPerguntas(divInputPergunta){
 
     // Se ja houver uma pergunta selecionada, vai esonder ela e abrir a que foi clicada
     if(perguntaJaSelecionada != null){
-        perguntaJaSelecionada.querySelector(".pergunta-fechada").classList.remove("hiden");
-        perguntaJaSelecionada.querySelector(".pergunta-aberta").classList.add(".hiden")
+        perguntaJaSelecionada.querySelector(".input-perguntas").classList.add("hiden");
+        perguntaJaSelecionada.classList.remove("selecionada");
+        perguntaJaSelecionada.querySelector(".icone-pergunta").classList.remove("hiden");
     }
 
-    divInputPergunta.classList.add("selecionado");
-    divInputPergunta.querySelector(".pergunta-fechada").classList.add("hiden");
-    divInputPergunta.querySelector(".pergunta-aberta").classlist.remove("hiden");
+    divInputPergunta.classList.add("selecionada");
+    divInputPergunta.querySelector(".input-perguntas").classList.remove("hiden");
+    divInputPergunta.querySelector(".icone-pergunta").classList.add("hiden");
 }

@@ -82,8 +82,8 @@
          <p class="voltarHome">Voltar para Home</p>
 
     </div>
-    <div class="tela-3 hiden">
-        <div class="info-quiz ">
+    <div class="tela-3">
+        <div class="info-quiz">
             <h2>Comece pelo começo</h2>
             <div class="inputs-info">
                 <input type="text" placeholder="Título do seu quizz" class="input-tiulo-criado">
@@ -95,13 +95,12 @@
         </div>
         <div class="perguntas hiden">
             <h2>Crie suas perguntas</h2>
-            <div class="pergunta-1 selecionada" onclick="abrirInputPerguntas(this)">
-                <div class="pergunta-fechada hiden">
+            <div class=" pergunta pergunta-1 selecionada" onclick="abrirInputPerguntas(this)">
+                <div class="pergunta-topo">
                     <h2>Pergunta 1</h2>
-                    <img src="./imagens/Vector.png" alt="">
+                    <img src="./imagens/Vector.png" alt="" class="icone-pergunta">
                 </div>
-                <div  class="pergunta-aberta">
-                    <h2>Pergunta 1</h2>
+                <div  class="input-perguntas">
                     <input type="text" placeholder="Texto da pergunta">
                     <input type="text" placeholder="Cor de fundo da pergunta">
                     <h2>Resposta correta</h2>
@@ -128,13 +127,12 @@
                     </ul>
                 </div>
             </div>
-            <div class="pergunta-2" onclick="abrirInputPerguntas(this)">
-                <div class="pergunta-fechada ">
-                    <h2>Pergunta 1</h2>
-                    <img src="./imagens/Vector.png" alt="">
+            <div class=" pergunta pergunta-2" onclick="abrirInputPerguntas(this)">
+                <div class="pergunta-topo">
+                    <h2>Pergunta 2</h2>
+                    <img src="./imagens/Vector.png" alt="" class="icone-pergunta">
                 </div>
-                <div  class="pergunta-aberta hiden">
-                    <h2>Pergunta 1</h2>
+                <div  class="input-perguntas hiden">
                     <input type="text" placeholder="Texto da pergunta">
                     <input type="text" placeholder="Cor de fundo da pergunta">
                     <h2>Resposta correta</h2>
@@ -161,6 +159,7 @@
                     </ul>
                 </div>
             </div>
+            
             <button>Prosseguir pra criar níveis</button>
         </div>
         <div class="niveis hiden ">
