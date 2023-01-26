@@ -96,3 +96,24 @@ color: #000000;
     align-items: center;
     flex-wrap: wrap;
 }
+
+.tela-2 .alternativas  .certo h3{
+    color: #009C22;
+
+}
+
+.tela-2 .alternativas .errado h3{
+    color: #FF4B4B;
+}
+
+
+
+.tela-2 .resultado{
+    margin-top: 35px;
+    width: 100%;
+    padding: 18px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+max-width: 759px;
+height: 676px;
+}
