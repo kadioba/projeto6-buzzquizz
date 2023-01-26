@@ -40,13 +40,22 @@ function enviarInfoQuizCriado(){
     }
 }
 
-// Função comentada para push no github
-/*function gerarInputPerguntas(){
+function gerarInputPerguntas(){
 
 }
 
 function abrirInputPerguntas(divInputPergunta){
 
-    perguntaJaSelecionada = document.querySelector(".perguntas .selecionado");
+    const perguntaJaSelecionada = document.querySelector(".perguntas .selecionada");
     console.log(perguntaJaSelecionada);
-}*/
+
+    // Se ja houver uma pergunta selecionada, vai esonder ela e abrir a que foi clicada
+    if(perguntaJaSelecionada != null){
+        perguntaJaSelecionada.querySelector(".pergunta-fechada").classList.remove("hiden");
+        perguntaJaSelecionada.querySelector(".pergunta-aberta").classList.add(".hiden")
+    }
+
+    divInputPergunta.classList.add("selecionado");
+    divInputPergunta.querySelector(".pergunta-fechada").classList.add("hiden");
+    divInputPergunta.querySelector(".pergunta-aberta").classlist.remove("hiden");
+}
