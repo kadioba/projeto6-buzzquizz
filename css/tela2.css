@@ -181,6 +181,11 @@
 }
 
 @media(max-width:1100px) {
+    
+    .tela-2{
+        max-width: 380px;
+    }
+    
     .tela-2 .banner {
         margin-top: 69px;
         height: 142px;
