@@ -233,5 +233,60 @@ function enviarPerguntasCriadas(){
 }
 
 function gerarInputNiveis(){
-    
+    const divDados = document.querySelector(".aba-niveis");
+    divDados.innerHTML = "";
+    let templateDados = "";
+
+    for(let i = 1; i <= numeroNiveisCriados; i++){
+        if(i == 1){
+            templateDados = `
+            <div class=" nivel nivel-${i} selecionado" onclick="abrirInputNiveis(this)">
+                <div class="nivel-topo">
+                    <h2>Nível ${i}</h2>
+                    <img src="./imagens/Vector.png" alt="" class="icone-nivel hide">
+                </div>
+                <div class="nivel-dados">
+                    <input type="text" class="titulo-nivel" placeholder="Título do nível">
+                    <input type="text" class="acerto-minimo" placeholder="% de acerto mínima">
+                    <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
+                    <input type="text" class="descrição-nivel" placeholder="Descrição do nível">
+                </div>
+            </div>`
+        }
+        else{
+            templateDados = `
+            <div class=" nivel nivel-${i}" onclick="abrirInputNiveis(this)"> 
+                <div class="nivel-topo">
+                    <h2>Nível ${i}</h2>
+                    <img src="./imagens/Vector.png" alt="" class="icone-nivel">
+                </div>
+                <div class="nivel-dados hiden">
+                    <input type="text" class="titulo-nivel" placeholder="Título do nível">
+                    <input type="text" class="acerto-minimo" placeholder="% de acerto mínima">
+                    <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
+                    <input type="text" class="descrição-nivel" placeholder="Descrição do nível">
+                </div>
+            </div>`
+        }
+        divDados.innerHTML += templateDados;
+    }
+
+}
+
+// Função que controla o comportamento do input ao ser clicado
+function abrirInputNiveis(divInputNivel){
+
+    const nivelJaSelecionado = document.querySelector(".niveis-geral .selecionado");
+    console.log(nivelJaSelecionado);
+
+    // Se ja houver uma pergunta selecionada, vai esonder ela e abrir a nova selecionada
+    if(nivelJaSelecionado != null){
+        nivelJaSelecionado.querySelector(".nivel-dados").classList.add("hiden");
+        nivelJaSelecionado.classList.remove("selecionado");
+        nivelJaSelecionado.querySelector(".icone-nivel").classList.remove("hiden");
+    }
+
+    divInputNivel.classList.add("selecionado");
+    divInputNivel.querySelector(".nivel-dados").classList.remove("hiden");
+    divInputNivel.querySelector(".icone-nivel").classList.add("hiden");
 }
