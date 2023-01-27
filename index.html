@@ -26,7 +26,7 @@
     <header>
         <h1>BuzzQuizz</h1>
     </header>
-    <div class="tela-1">
+    <div class="tela-1 hiden">
         <div class="container-quizzes-criados">
             <h2>Você não criou nenhum quizz ainda :(</h2>
             <button>Criar Quizz</button>
@@ -61,48 +61,70 @@
                 </div>
             </div>
         </div>
-    <div class="tela-2 hiden ">
+    </div>
+    <div class="tela-2">
         <div class="banner">
             <div class="mask">
             <h1 class="titulo">O quão Potterhead é você?</h1>
             </div>
             <img class="" src="./imagens/Rectangle 34.png" alt="">
         </div>
+        
         <div class="questBox">
           <div class="top">
             <h2 class="pergunta">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h2>
         </div>
-        <div class="alternativas">
+        <div class="alternativas cor">
+        <div class="filtro hiden"></div>
+        <div class="card errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
         
-        <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+        <div class="card  errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
         
-        <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+        <div class="card  errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
         
-        <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
-        
-        <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div>
+        <div class="card  certo" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div>
         
         </div>
         </div>
+    
 
         <div class="questBox">
             <div class="top">
               <h2 class="pergunta">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h2>
           </div>
-          <div class="alternativas">
+          <div class="alternativas cor">
+          <div class="filtro hiden"></div>
+          <div class="card errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
           
-          <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+          <div class="card  errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
           
-          <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+          <div class="card  errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
           
-          <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
-          
-          <div class="card"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div>
+          <div class="card  certo" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div>
           
           </div>
           </div>
+  
 
-          <div class="resultado">
+          <div class="questBox">
+            <div class="top">
+              <h2 class="pergunta">Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h2>
+          </div>
+          <div class="alternativas cor">
+          <div class="filtro hiden"></div>
+          <div class="card errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+          
+          <div class="card  errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+          
+          <div class="card  errado" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div> 
+          
+          <div class="card  certo" onclick="selecionarAlternativa(this)"><img src="./imagens/Rectangle 34.png" alt=""><h3>Qualque Coisa</h3></div>
+          
+          </div>
+          </div>
+  
+
+          <div class="resultado hiden">
             <div class="percentualDeAcerto" >
                 <p>88% de acerto: Você é praticamente um aluno de Hogwarts!</p>
             </div>
@@ -157,8 +179,8 @@
 
     <!-- Lunk que conecta o axios -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
     <!-- Link que puxa arquivo js -->
+    <script src="./javascript/script_tela2.js"></script>
     <script src="./javascript/script_tela3.js"></script>    
 </body>
 </html>  
