@@ -18,6 +18,7 @@ function selecionarAlternativa(elemento) {
      setTimeout(mostrarResultado,2000);
     }else{
          setTimeout(()=>ProximaQuestBox.scrollIntoView(),2000);
+         setTimeout(()=>window.scrollBy(0,-80),2010);
 }
 }
 
