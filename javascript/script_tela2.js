@@ -1,6 +1,19 @@
 let acertos=0;
 let respondidos=0;
-const numeroDePerguntas=3;
+let numeroDePerguntas=0;
+
+function iniciarQuiz(id) {
+    
+const dados = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
+    dados.then(salvarDados);
+    dados.catch(()=>alert('Erro ao carregar quiz. Tente novamente mais tarde'))
+
+    function salvarDados(dados) {
+        console.log(dados.data)        
+    }
+
+}
+
 
 
 function selecionarAlternativa(elemento) {
@@ -26,5 +39,12 @@ function selecionarAlternativa(elemento) {
 function mostrarResultado() {
    const resultadot2= document.querySelector('.tela-2 .resultado');
    resultadot2.classList.remove('hiden');
-   resultadot2.scrollIntoView()
+   resultadot2.scrollIntoView() 
 }
+
+function gerarResultado() {
+    const percentual = (100/numeroDePerguntas*acertos).toFixed(0)
+}
+
+
+    
