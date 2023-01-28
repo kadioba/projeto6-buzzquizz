@@ -18,6 +18,11 @@ const isValidUrl = urlString=> {
     return !!urlPattern.test(urlString);
 }
 
+const validaCor = stringCor => {
+    var codigoHexadecimal = /^#[a-fA-F0-9]{6}$/;
+    return codigoHexadecimal.test(stringCor);
+}
+
 function enviarInfoQuizCriado(){
     objetoPerguntaCriada.title = document.querySelector(".input-tiulo-criado").value;
 
@@ -63,20 +68,20 @@ function gerarInputPerguntas(){
                     <h2>Respostas incorretas</h2>
                     <ul>
                         <li class="resposta-incorreta">
-                            <input type="text" placeholder="Resposta incorreta 1" class="texto-resposta-incorreta">
-                            <input type="text" placeholder="URL da imagem 1" class="url-resposta-incorreta">
+                            <input type="text" placeholder="Resposta incorreta 1" class="texto-resposta-incorreta1">
+                            <input type="text" placeholder="URL da imagem 1" class="url-resposta-incorreta1">
                         </li>
                     </ul>
                     <ul>
                         <li class="resposta-incorreta">
-                            <input type="text" placeholder="Resposta incorreta 2" class="texto-resposta-incorreta">
-                            <input type="text" placeholder="URL da imagem 2" class="url-resposta-incorreta">
+                            <input type="text" placeholder="Resposta incorreta 2" class="texto-resposta-incorreta2">
+                            <input type="text" placeholder="URL da imagem 2" class="url-resposta-incorreta2">
                         </li>
                     </ul>
                     <ul>
                         <li class="resposta-incorreta">
-                            <input type="text" placeholder="Resposta incorreta 3" class="texto-resposta-incorreta">
-                            <input type="text" placeholder="URL da imagem 3" class="url-resposta-incorreta">
+                            <input type="text" placeholder="Resposta incorreta 3" class="texto-resposta-incorreta3">
+                            <input type="text" placeholder="URL da imagem 3" class="url-resposta-incorreta3">
                         </li>
                     </ul>
                 </div>
@@ -98,20 +103,20 @@ function gerarInputPerguntas(){
                     <h2>Respostas incorretas</h2>
                     <ul>
                         <li class="resposta-incorreta">
-                            <input type="text" placeholder="Resposta incorreta 1" class="texto-resposta-incorreta">
-                            <input type="text" placeholder="URL da imagem 1" class="url-resposta-incorreta">
+                            <input type="text" placeholder="Resposta incorreta 1" class="texto-resposta-incorreta1">
+                            <input type="text" placeholder="URL da imagem 1" class="url-resposta-incorreta1">
                         </li>
                     </ul>
                     <ul>
                         <li class="resposta-incorreta">
-                            <input type="text" placeholder="Resposta incorreta 2" class="texto-resposta-incorreta">
-                            <input type="text" placeholder="URL da imagem 2" class="url-resposta-incorreta">
+                            <input type="text" placeholder="Resposta incorreta 2" class="texto-resposta-incorreta2">
+                            <input type="text" placeholder="URL da imagem 2" class="url-resposta-incorreta2">
                         </li>
                     </ul>
                     <ul>
                         <li class="resposta-incorreta">
-                            <input type="text" placeholder="Resposta incorreta 3" class="texto-resposta-incorreta">
-                            <input type="text" placeholder="URL da imagem 3" class="url-resposta-incorreta">
+                            <input type="text" placeholder="Resposta incorreta 3" class="texto-resposta-incorreta3">
+                            <input type="text" placeholder="URL da imagem 3" class="url-resposta-incorreta3">
                         </li>
                     </ul>
                 </div>
@@ -141,9 +146,8 @@ function abrirInputPerguntas(divInputPergunta){
 
 function enviarPerguntasCriadas(){
 
-    // Seleciona todos os elementos de input das perguntas
+    // Seleciona todos os elementos de input de perguntas
     const elementoPerguntasCriadas = document.querySelectorAll(".input-perguntas");
-    console.log(elementoPerguntasCriadas)
     
     // Array que recebe os objetos de cada pergunta
     const objetoPerguntaParaEnviar = objetoPerguntaCriada.questions;
@@ -152,29 +156,137 @@ function enviarPerguntasCriadas(){
 
         // Objeto da pergunta que recebe titulo, cor e respostas (repostas = array de objetos)
         const objetoPergunta = {};
-        objetoPergunta.title = pergunta.querySelector(".titulo-pergunta").value;
-        objetoPergunta.color = pergunta.querySelector(".cor-pergunta").value;
+        
+        let tituloPergunta = pergunta.querySelector(".titulo-pergunta").value;
+        let corPergunta = pergunta.querySelector(".cor-pergunta").value;
 
-        // Array que recebe objetos de resposta
-        objetoPergunta.answers = [];
-        const arrayRespostas = objetoPergunta.answers;
+        if(tituloPergunta.length >= 20 && validaCor(corPergunta)){
+            objetoPergunta.title = tituloPergunta;
+            objetoPergunta.color = corPergunta;
 
-        const respostaCorreta = {isCorrectAnswer: true};
-        respostaCorreta.text = pergunta.querySelector(".resposta-correta").value;
-        respostaCorreta.image = pergunta.querySelector(".url-imagem-correta").value;
 
-        arrayRespostas.push(respostaCorreta);
+            // Array que recebe objetos de resposta
+            objetoPergunta.answers = [];
+            const arrayRespostas = objetoPergunta.answers;
 
-        const elementosRespostasErradas = pergunta.querySelectorAll(".resposta-incorreta");
+            const respostaCorreta = {isCorrectAnswer: true};
+            let textoRespostaCorreta = pergunta.querySelector(".resposta-correta").value;
+            let imagemRespostaCorreta = pergunta.querySelector(".url-imagem-correta").value;
 
-        elementosRespostasErradas.forEach(ElementoRespostaErrada => {
-            const respostaErrada = {isCorrectAnswer: false};
-            respostaErrada.text = ElementoRespostaErrada.querySelector(".texto-resposta-incorreta");
-            respostaErrada.image = ElementoRespostaErrada.querySelector(".url-resposta-incorreta");
-            arrayRespostas.push(respostaErrada);
-        });
+            const respostaErrada1 = {isCorrectAnswer: false};
+            let textoRespostaErrada1 = document.querySelector(".texto-resposta-incorreta1").value;
+            let imagemRespostaErrada1 = document.querySelector(".url-resposta-incorreta1").value;
 
-        objetoPerguntaParaEnviar.push(objetoPergunta);
+            const respostaErrada2 = {isCorrectAnswer: false};
+            let textoRespostaErrada2 = document.querySelector(".texto-resposta-incorreta2").value;
+            let imagemRespostaErrada2 = document.querySelector(".url-resposta-incorreta2").value;
+
+            const respostaErrada3 = {isCorrectAnswer: false};
+            let textoRespostaErrada3 = document.querySelector(".texto-resposta-incorreta3").value;
+            let imagemRespostaErrada3 = document.querySelector(".url-resposta-incorreta3").value;
+
+            const verificacaoRespostas = textoRespostaCorreta != "" && isValidUrl(imagemRespostaCorreta) && textoRespostaErrada1 != "" &&isValidUrl(imagemRespostaErrada1);
+            
+            if(verificacaoRespostas){
+                respostaCorreta.text = textoRespostaCorreta;
+                respostaCorreta.image = imagemRespostaCorreta;
+
+                respostaErrada1.text = textoRespostaErrada1;
+                respostaErrada1.image = imagemRespostaErrada1;
+
+                arrayRespostas.push(respostaCorreta);
+                arrayRespostas.push(respostaErrada1);
+
+                if(textoRespostaErrada2 != "" && isValidUrl(imagemRespostaErrada2)){
+                    respostaErrada2.text = textoRespostaErrada2;
+                    respostaErrada2.image = imagemRespostaErrada2;
+
+                    arrayRespostas.push(respostaErrada2);
+                }
+
+                if(textoRespostaErrada3 != "" && isValidUrl(imagemRespostaErrada3)){
+                    respostaErrada3.text = textoRespostaErrada3;
+                    respostaErrada3.image = imagemRespostaErrada3;
+
+                    arrayRespostas.push(respostaErrada3);
+                }
+
+                objetoPerguntaParaEnviar.push(objetoPergunta);
+                document.querySelector(".perguntas").classList.add("hiden");
+                document.querySelector(".quiz-pronto").classList.remove("hiden");
+                gerarInputNiveis();
+
+            }
+            else{
+                alert("Perguntas Invalidas, preencha novmanete!");
+            }
+
+        }
+
+        else{
+            alert("Perguntas Invalidas, preencha novmanete!");
+        }
+
     });
+
     console.log(objetoPerguntaCriada);
+}
+
+function gerarInputNiveis(){
+    const divDados = document.querySelector(".aba-niveis");
+    divDados.innerHTML = "";
+    let templateDados = "";
+
+    for(let i = 1; i <= numeroNiveisCriados; i++){
+        if(i == 1){
+            templateDados = `
+            <div class=" nivel nivel-${i} selecionado" onclick="abrirInputNiveis(this)">
+                <div class="nivel-topo">
+                    <h2>Nível ${i}</h2>
+                    <img src="./imagens/Vector.png" alt="" class="icone-nivel hide">
+                </div>
+                <div class="nivel-dados">
+                    <input type="text" class="titulo-nivel" placeholder="Título do nível">
+                    <input type="text" class="acerto-minimo" placeholder="% de acerto mínima">
+                    <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
+                    <input type="text" class="descrição-nivel" placeholder="Descrição do nível">
+                </div>
+            </div>`
+        }
+        else{
+            templateDados = `
+            <div class=" nivel nivel-${i}" onclick="abrirInputNiveis(this)"> 
+                <div class="nivel-topo">
+                    <h2>Nível ${i}</h2>
+                    <img src="./imagens/Vector.png" alt="" class="icone-nivel">
+                </div>
+                <div class="nivel-dados hiden">
+                    <input type="text" class="titulo-nivel" placeholder="Título do nível">
+                    <input type="text" class="acerto-minimo" placeholder="% de acerto mínima">
+                    <input type="text" class="url-imagem-nivel" placeholder="URL da imagem do nível">
+                    <input type="text" class="descrição-nivel" placeholder="Descrição do nível">
+                </div>
+            </div>`
+        }
+        divDados.innerHTML += templateDados;
     }
+
+}
+
+// Função que controla o comportamento do input ao ser clicado
+function abrirInputNiveis(divInputNivel){
+
+    const nivelJaSelecionado = document.querySelector(".niveis-geral .selecionado");
+    console.log(nivelJaSelecionado);
+
+    // Se ja houver uma pergunta selecionada, vai esonder ela e abrir a nova selecionada
+    if(nivelJaSelecionado != null){
+        nivelJaSelecionado.querySelector(".nivel-dados").classList.add("hiden");
+        nivelJaSelecionado.classList.remove("selecionado");
+        nivelJaSelecionado.querySelector(".icone-nivel").classList.remove("hiden");
+    }
+
+    divInputNivel.classList.add("selecionado");
+    divInputNivel.querySelector(".nivel-dados").classList.remove("hiden");
+    divInputNivel.querySelector(".icone-nivel").classList.add("hiden");
+}
