@@ -33,7 +33,7 @@ function selecionarAlternativa(elemento) {
     filtroBranco.classList.remove('hiden');
     elemento.removeAttribute('onClick');
     respondidos++;
-    if(elemento.classList.contains("certo")){
+    if(elemento.classList.contains("true")){
         acertos++;
     }
     if (respondidos === numeroDePerguntas) {
