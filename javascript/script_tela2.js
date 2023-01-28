@@ -20,6 +20,7 @@ function salvarDados(dados) {
    titulo = dados.data.title
    imgBanner =dados.data.image
    numeroDePerguntas = perguntasDoQuiz.length
+   exibirNaTela()
 }
 
 
@@ -32,7 +33,7 @@ function selecionarAlternativa(elemento) {
     filtroBranco.classList.remove('hiden');
     elemento.removeAttribute('onClick');
     respondidos++;
-    if(elemento.classList.contains("certo")){
+    if(elemento.classList.contains("true")){
         acertos++;
     }
     if (respondidos === numeroDePerguntas) {
@@ -65,7 +66,7 @@ function exibirNaTela() {
     <div class="mask">
     <h1 class="titulo">${titulo}</h1>
     </div>
-    <img class="" src="${imgBanner}" alt="erro">
+    <img class="" src="${imgBanner}" alt="Erro ao carregar imagem">
     </div>`
 
     for (let i = 0; i < numeroDePerguntas; i++) {
@@ -83,7 +84,7 @@ function exibirNaTela() {
         for (let j = 0; j < perguntasDoQuiz[i].answers.length; j++) {
 
         alternativas.innerHTML+=`<div class="card ${perguntasDoQuiz[i].answers[j].isCorrectAnswer
-        }" onclick="selecionarAlternativa(this)"><img src="${perguntasDoQuiz[i].answers[j].image}" alt="x"><h3>${perguntasDoQuiz[i].answers[j].text}</h3></div>`
+        }" onclick="selecionarAlternativa(this)"><img src="${perguntasDoQuiz[i].answers[j].image}" alt="Erro ao carregar imagem"><h3>${perguntasDoQuiz[i].answers[j].text}</h3></div>`
             
         }
     }  
