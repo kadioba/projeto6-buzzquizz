@@ -2,9 +2,9 @@
 //  Variaveis globais que registram as inputs do usuario
 let numeroPerguntasCriadas;
 let numeroNiveisCriados;
-let objetoPerguntaCriada = {};
-objetoPerguntaCriada.questions = [];
-objetoPerguntaCriada.levels = [];
+let objetoQuizCriado = {};
+objetoQuizCriado.questions = [];
+objetoQuizCriado.levels = [];
 
 
 // Função que valida url
@@ -25,16 +25,16 @@ const validaCor = stringCor => {
 }
 
 function enviarInfoQuizCriado(){
-    objetoPerguntaCriada.title = document.querySelector(".input-tiulo-criado").value;
+    objetoQuizCriado.title = document.querySelector(".input-tiulo-criado").value;
 
-    objetoPerguntaCriada.image = document.querySelector(".input-url-imagem-criada").value;
+    objetoQuizCriado.image = document.querySelector(".input-url-imagem-criada").value;
 
     numeroPerguntasCriadas = document.querySelector(".input-numero-perguntas-criadas").value;
 
     numeroNiveisCriados = document.querySelector(".input-numero-niveis-criados").value;
 
-    const infoQuizValidos = isValidUrl(objetoPerguntaCriada.image) && objetoPerguntaCriada.title.length >= 20 && objetoPerguntaCriada.title.length <= 65 && numeroPerguntasCriadas >= 3 &&  numeroNiveisCriados >= 2;
-    console.log(objetoPerguntaCriada);
+    const infoQuizValidos = isValidUrl(objetoQuizCriado.image) && objetoQuizCriado.title.length >= 20 && objetoQuizCriado.title.length <= 65 && numeroPerguntasCriadas >= 3 &&  numeroNiveisCriados >= 2;
+    console.log(objetoQuizCriado);
 
     if(infoQuizValidos){
         document.querySelector(".info-quiz").classList.add("hiden");
@@ -151,7 +151,7 @@ function enviarPerguntasCriadas(){
     const elementoPerguntasCriadas = document.querySelectorAll(".input-perguntas");
     
     // Array que recebe os objetos de cada pergunta
-    const objetoPerguntaParaEnviar = objetoPerguntaCriada.questions;
+    const objetoPerguntaParaEnviar = objetoQuizCriado.questions;
 
     elementoPerguntasCriadas.forEach(pergunta => {
 
@@ -230,7 +230,7 @@ function enviarPerguntasCriadas(){
 
     });
 
-    console.log(objetoPerguntaCriada);
+    console.log(objetoQuizCriado);
 }
 
 function gerarInputNiveis(){
@@ -335,13 +335,67 @@ function enviarNiveisCriados(){
     });
 
     if(verificadorPorcentagem && arrayNiveis.length == numeroNiveisCriados){
-        objetoPerguntaCriada.levels = arrayNiveis;
-        document.querySelector(".niveis-geral").classList.add("hiden");
-        document.querySelector(".quiz-pronto").classList.remove("hiden");
-        gerarFotoPaginaFinal();
+        objetoQuizCriado.levels = arrayNiveis;
+        enviarQuizServidor();
     }
 
     else{
         alert("Dados de niveis invalidos");
     }
+}
+
+function enviarQuizServidor(){
+    const enviarQuizParaServidor = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", objetoQuizCriado);
+
+    enviarQuizParaServidor.then(envioQuizSucesso);
+    enviarQuizParaServidor.catch(envioQuizFalha);
+}
+
+function envioQuizSucesso(quizCriado){
+    // Guarda o id  no local storage
+    const idQuiz = quizCriado.data.id;
+    localStorage.setItem(`id${idQuiz}`, idQuiz);
+
+    // Se foi enviado com sucesso, vai pra ultima pagina
+    document.querySelector(".niveis-geral").classList.add("hiden");
+    document.querySelector(".quiz-pronto").classList.remove("hiden");
+
+    // Limpa o que estava dentro das variaveis globais
+    objetoQuizCriado = {};
+    objetoQuizCriado.questions = [];
+    objetoQuizCriado.levels = [];
+
+    gerarTelaQuizCriado(quizCriado);
+
+    console.log("Envio com sucesso");
+    console.log(quizCriado);
+}
+
+function envioQuizFalha(dadosFalha){
+    console.log("Falha no envio");
+    console.log(dadosFalha);
+}
+
+function gerarTelaQuizCriado(quizEnviado){
+
+    const idQuizCriado = quizEnviado.data.id;
+
+    // Selecionar a div que tem a foto e texto
+    const elementoQuizEnviado = document.querySelector(".quiz-criado");
+
+    elementoQuizEnviado.innerHTML = `
+    <img src="${quizEnviado.data.image}" alt="">
+    <p class="nome-do-quiz-final">${quizEnviado.data.title}</p>`;
+
+    const botaoQuizCriado = document.querySelector(".botao-acessar-quiz-criado");
+    botaoQuizCriado.onclick = () => {abrirQuizCriado(idQuizCriado)};
+
+    const fotoQuizCriado = document.querySelector(".quiz-criado");
+    fotoQuizCriado.onclick = () => {abrirQuizCriado(idQuizCriado)};
+}
+
+function abrirQuizCriado(idrecebida){
+    document.querySelector(".tela-3").classList.add("hiden");
+    document.querySelector(".tela-2").classList.remove("hiden");
+    iniciarQuiz(idrecebida);
 }
