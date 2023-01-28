@@ -18,6 +18,7 @@ const isValidUrl = urlString=> {
     return !!urlPattern.test(urlString);
 }
 
+// Função que valida a cores hexadecimais
 const validaCor = stringCor => {
     var codigoHexadecimal = /^#[a-fA-F0-9]{6}$/;
     return codigoHexadecimal.test(stringCor);
@@ -127,7 +128,7 @@ function gerarInputPerguntas(){
 
 }
 
-// Função que controla o comportamento do input ao ser clicado
+// Função que controla o comportamento do input de perguntas ao ser clicado
 function abrirInputPerguntas(divInputPergunta){
 
     const perguntaJaSelecionada = document.querySelector(".perguntas .selecionada");
@@ -213,7 +214,7 @@ function enviarPerguntasCriadas(){
 
                 objetoPerguntaParaEnviar.push(objetoPergunta);
                 document.querySelector(".perguntas").classList.add("hiden");
-                document.querySelector(".quiz-pronto").classList.remove("hiden");
+                document.querySelector(".niveis-geral").classList.remove("hiden");
                 gerarInputNiveis();
 
             }
@@ -273,20 +274,74 @@ function gerarInputNiveis(){
 
 }
 
-// Função que controla o comportamento do input ao ser clicado
+// Função que controla o comportamento do input de niveis ao serem clicados
 function abrirInputNiveis(divInputNivel){
 
+    // Busca a div ja selecionada
     const nivelJaSelecionado = document.querySelector(".niveis-geral .selecionado");
-    console.log(nivelJaSelecionado);
 
-    // Se ja houver uma pergunta selecionada, vai esonder ela e abrir a nova selecionada
+    // Se ja houver uma pergunta selecionada, esconde ela
     if(nivelJaSelecionado != null){
         nivelJaSelecionado.querySelector(".nivel-dados").classList.add("hiden");
         nivelJaSelecionado.classList.remove("selecionado");
         nivelJaSelecionado.querySelector(".icone-nivel").classList.remove("hiden");
     }
 
+    // Abre a div selecionada
     divInputNivel.classList.add("selecionado");
     divInputNivel.querySelector(".nivel-dados").classList.remove("hiden");
     divInputNivel.querySelector(".icone-nivel").classList.add("hiden");
+}
+
+function enviarNiveisCriados(){
+
+    const elementoNiveisCriados = document.querySelectorAll(".nivel-dados");
+
+    // Array que recebe os niveis antes de enviar para o objeto global
+    const arrayNiveis = [];
+
+    // Array que armazena os niveis para verificação de nivel de acerto minimo (0%)
+    const arrayPorcentagemNiveis = [];
+
+    // Variavel que armazena o booleano true ou false resultante da verificacao de nivel 0 presente
+    let verificadorPorcentagem;
+
+    elementoNiveisCriados.forEach(nivel => {
+
+        const objetoNivel = {};
+
+        let tituloNivel = nivel.querySelector(".titulo-nivel").value;
+        let acertoMinimoNivel = nivel.querySelector(".acerto-minimo").value;
+        let imagemNivel = nivel.querySelector(".url-imagem-nivel").value;
+        let descricaoNivel = nivel.querySelector(".descrição-nivel").value;
+
+        const verificacaoNiveis = tituloNivel.length >= 10 && acertoMinimoNivel >= 0 && acertoMinimoNivel <=100 && isValidUrl(imagemNivel) && descricaoNivel.length >= 30;
+
+
+        if(verificacaoNiveis){
+            arrayPorcentagemNiveis.push(acertoMinimoNivel);
+            objetoNivel.title = tituloNivel;
+            objetoNivel.image = imagemNivel;
+            objetoNivel.text = descricaoNivel;
+            objetoNivel.minValue = Number(acertoMinimoNivel);
+            arrayNiveis.push(objetoNivel);
+        }
+    });
+
+    arrayPorcentagemNiveis.forEach(nivel => {
+        if(nivel == 0){
+            verificadorPorcentagem = true;
+        }
+    });
+
+    if(verificadorPorcentagem && arrayNiveis.length == numeroNiveisCriados){
+        objetoPerguntaCriada.levels = arrayNiveis;
+        document.querySelector(".niveis-geral").classList.add("hiden");
+        document.querySelector(".quiz-pronto").classList.remove("hiden");
+        gerarFotoPaginaFinal();
+    }
+
+    else{
+        alert("Dados de niveis invalidos");
+    }
 }
