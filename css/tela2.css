@@ -98,11 +98,11 @@
     position: relative;
 }
 
-.tela-2 .alternativas .certo h3 {
+.tela-2 .alternativas .true h3 {
     color: #009C22;
 }
 
-.tela-2 .alternativas .errado h3 {
+.tela-2 .alternativas .false h3 {
     color: #FF4B4B;
 }
 
