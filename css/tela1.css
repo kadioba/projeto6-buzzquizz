@@ -3,7 +3,7 @@
     margin-left: auto;
     margin-right: auto;
 }
-.tela-1 .container-quizzes-criados{
+.tela-1 .container-quizzes-criados .lista-vazia{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,11 +11,14 @@
     width: 1051px;
     height: 181px;
     border-radius: 5px;
-    border: 1px solid #D4D4D4;
+    border: 1px dashed #D4D4D4;
     position: relative;
     top: 146px;
 }
-.tela-1 .container-quizzes-criados h2{
+.tela-1 .container-quizzes-criados .lista-vazia.hiden{
+    display: none;
+}
+.tela-1 .container-quizzes-criados .lista-vazia h2{
     width: 250px;
     height: 107px;
     font-weight: 400;
@@ -26,7 +29,7 @@
     text-align: center;
     top: 40px;
 }
-.tela-1 .container-quizzes-criados button{
+.tela-1 .container-quizzes-criados .lista-vazia button{
     width: 151px;
     height: 40px;
     position: absolute;
@@ -36,14 +39,56 @@
     color: #EC362D;
     border: 1px dashed #EC362D;
 }
+.tela-1 .container-quizzes-criados .lista-criada{
+    margin-top: 130px;
+}
+.tela-1 .container-quizzes-criados .lista-criada.hiden{
+    display: none;
+}
+.tela-1 .container-quizzes-criados .lista-criada .titulo-seus-quizzes{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.tela-1 .container-quizzes-criados .lista-criada .titulo-seus-quizzes h3{
+    width: 122px;
+    height: 23px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23.44px;
+}
+.tela-1 .container-quizzes-criados .lista-criada .titulo-seus-quizzes ion-icon{
+    width: 31px;
+    height: 30px;
+    color: #EC362D;
+    margin-left: 8px;
+}
+.tela-1 .container-quizzes-criados .lista-criada .imagens-seus-quizzes{
+    display: flex;
+}
+.tela-1 .container-quizzes-criados .lista-criada .imagens-seus-quizzes .quizz img{
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
+}
+.tela-1 .container-quizzes-criados .lista-criada .imagens-seus-quizzes .quizz p{
+    position: absolute;
+    bottom: 2px;
+    width: 309px;
+    height: 54px;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22.27px;
+    color: #FFFFFF;
+    margin-left: 10px;
+}
 .tela-1 .container-todos-quizzes{
     display: flex;
     flex-wrap: wrap;
 }
 .tela-1 .titulo{
-    margin-top: 230px;
-    display: flex;
-    justify-content:flex-start;
+    margin-top: 200px;
 }
 .tela-1 .titulo h3{
     width: 158px;
@@ -53,7 +98,8 @@
     line-height: 23.44px;
     margin-bottom: 10px;
 }
-.tela-1 .container-todos-quizzes .quizz{
+.tela-1 .container-todos-quizzes .quizz, 
+.tela-1 .container-quizzes-criados .lista-criada .imagens-seus-quizzes .quizz{
     position: relative;
     padding-right: 10px;
     padding-bottom: 10px;
@@ -76,21 +122,30 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%);
 }
 @media (max-width: 1100px){
-    .tela-1, 
-    .tela-1 .titulo h3,
-    .tela-1 .container-todos-quizzes .quizz p, .tela-1 .container-todos-quizzes .quizz img{
-        width: 100%;
-    }
-    .tela-1 .container-quizzes-criados{
-        width: 75%;
+    .tela-1 {
+        width: 93%;
         margin-left: auto;
         margin-right: auto;
+    }
+    .tela-1 .container-quizzes-criados .lista-vazia, .tela-1 .container-todos-quizzes, 
+    .tela-1 .titulo, .tela-1 .titulo h3, .tela-1 .container-todos-quizzes .quizz, 
+    .tela-1 .container-todos-quizzes .quizz img, 
+    .tela-1 .container-quizzes-criados .lista-criada .imagens-seus-quizzes .quizz img, 
+    .tela-1 .container-quizzes-criados, .tela-1 .container-quizzes-criados .lista-criada .imagens-seus-quizzes .quizz,
+    .tela-1 .container-quizzes-criados .lista-criada .imagens-seus-quizzes .quizz img{
+        width: 100%;
     }
     .tela-1 .container-todos-quizzes{
         justify-content: center;
     }
-    .tela-1 .titulo{
-        margin-left: 50px;
+    .tela-1 .container-quizzes-criados .lista-criada .titulo-seus-quizzes{
+        justify-content: space-between;
     }
-
+    .tela-1 .container-quizzes-criados .lista-criada .imagens-seus-quizzes{
+        flex-direction: column;
+        align-items: center;
+    }
+    .tela-1 .container-quizzes-criados .lista-criada .titulo-seus-quizzes ion-icon{
+        margin-right: 8px;
+    }
 }
