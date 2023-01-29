@@ -219,13 +219,13 @@ function enviarPerguntasCriadas(){
 
             }
             else{
-                alert("Perguntas Invalidas, preencha novmanete!");
+                alert("Perguntas Invalidas, preencha novamente!");
             }
 
         }
 
         else{
-            alert("Perguntas Invalidas, preencha novmanete!");
+            alert("Perguntas Invalidas, preencha novamente!");
         }
 
     });
