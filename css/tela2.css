@@ -308,5 +308,9 @@
     .tela-2 .resultado {
         margin-bottom: 34px;
     }
+
+    .tela-2{
+       overflow-y: hidden;
+    }
     
 }

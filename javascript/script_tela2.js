@@ -129,7 +129,7 @@ function montarResultado() {
 
     tela.innerHTML += `<div class="resultado hiden">
     <div class="percentualDeAcerto" >
-        <p>${percentual}% de acerto:${faixaDeAcerto.title}</p>
+        <p>${percentual}% de acerto: ${faixaDeAcerto.title}</p>
     </div>
         <div class="mid">
           <img src="${faixaDeAcerto.image}" alt="Erro ao carregar img">
