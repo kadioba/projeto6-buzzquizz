@@ -30,22 +30,14 @@
         <div class="container-quizzes-criados">
             <div class="lista-vazia">
                 <h2>Você não criou nenhum quizz ainda :(</h2>
-                <button>Criar Quizz</button>
+                <button onclick="criarQuiz()">Criar Quizz</button>
             </div>
             <div class="lista-criada hiden">
                 <div class="titulo-seus-quizzes">
                     <h3>Seus Quizzes</h3>
-                    <ion-icon name="add-circle"></ion-icon>
+                    <ion-icon name="add-circle" onclick="criarQuiz()"></ion-icon>
                 </div>
                 <div class="imagens-seus-quizzes">
-                    <div class="quizz">
-                        <img src="./imagens/Potterhead.png">
-                        <p>O quão Potterhead é você?</p>
-                    </div>
-                    <div class="quizz">
-                        <img src="./imagens/ex-BBB.png">
-                        <p>É ex-BBB ou ex-De férias com o Ex?</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -53,35 +45,11 @@
             <h3>Todos os Quizzes</h3>
         </div>
             <div class="container-todos-quizzes">
-                <div class="quizz">
-                    <img src="./imagens/simpsons.png">
-                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                </div>
-                <div class="quizz">
-                    <img src="./imagens/Rectangle 36.png">
-                    <p>O quanto você é de boas?</p>
-                </div>
-                <div class="quizz">
-                    <img src="./imagens/simpsons.png">
-                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                </div>
-                <div class="quizz">
-                    <img src="./imagens/simpsons.png">
-                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                </div>
-                <div class="quizz">
-                    <img src="./imagens/Rectangle 36.png">
-                    <p>O quanto você é de boas?</p>
-                </div>
-                <div class="quizz">
-                    <img src="./imagens/simpsons.png">
-                    <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
-                </div>
             </div>
         </div>
     </div>
     <div class="tela-2 hiden">
-        <!-- <div class="banner">
+        <div class="banner">
             <div class="mask">
             <h1 class="titulo">O quão Potterhead é você?</h1>
             </div>
@@ -150,11 +118,11 @@
                 </div>
           </div>
          <button class="reiniciar">Reiniciar Quizz</button>
-         <p class="voltarHome">Voltar para Home</p> -->
+         <p class="voltarHome">Voltar para Home</p>
 
     </div>
-    <div class="tela-3 ">
-        <div class="info-quiz ">
+    <div class="tela-3 hiden">
+        <div class="info-quiz hiden">
             <h2>Comece pelo começo</h2>
             <div class="inputs-info">
                 <input type="text" placeholder="Título do seu quizz" class="input-tiulo-criado">
@@ -192,6 +160,7 @@
     <!-- Link que conecta a biblioteca de ion-icons-->
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script> 
     <!-- Link que puxa arquivo js -->
+    <script src="./javascript/script_tela1.js"></script>
     <script src="./javascript/script_tela2.js"></script>
     <script src="./javascript/script_tela3.js"></script>   
 </body>
