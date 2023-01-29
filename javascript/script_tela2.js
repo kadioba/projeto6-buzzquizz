@@ -1,26 +1,30 @@
 let acertos=0;
 let respondidos=0;
 let numeroDePerguntas=0;
-let perguntasDoQuiz=[]
-let levelDoQuiz=[]
+let perguntasDoQuiz=[];
+let levelDoQuiz=[];
+let faixaDeAcerto;
 let titulo;
 let imgBanner;
+let percentual;
+const tela =document.querySelector('.tela-2');
+
 
 function iniciarQuiz(id) {
     
 const dados = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
     dados.then(salvarDados);
-    dados.catch(()=>alert('Erro ao carregar quiz. Tente novamente mais tarde'))
+    dados.catch(()=>alert('Erro ao carregar quiz. Tente novamente mais tarde'));
 }
 
 function salvarDados(dados) {
    console.log(dados.data);
    perguntasDoQuiz = dados.data.questions;
-   levelDoQuiz = dados.data.levels
-   titulo = dados.data.title
-   imgBanner =dados.data.image
-   numeroDePerguntas = perguntasDoQuiz.length
-   exibirNaTela()
+   levelDoQuiz = dados.data.levels;
+   titulo = dados.data.title;
+   imgBanner =dados.data.image;
+   numeroDePerguntas = perguntasDoQuiz.length;
+   exibirNaTela();
 }
 
 
@@ -45,29 +49,18 @@ function selecionarAlternativa(elemento) {
 }
 
 
-function mostrarResultado() {
-   const resultadot2= document.querySelector('.tela-2 .resultado');
-   resultadot2.classList.remove('hiden');
-   resultadot2.scrollIntoView() 
-}
-
-function gerarResultado() {
-    const percentual = (100/numeroDePerguntas*acertos).toFixed(0)
-}
-
-
 
 function exibirNaTela() {
-    const tela =document.querySelector('.tela-2')
+    
     console.log(tela);
-    tela.innerHTML=''
+    tela.innerHTML='';
 
     tela.innerHTML=`<div class="banner">
     <div class="mask">
     <h1 class="titulo">${titulo}</h1>
     </div>
     <img class="" src="${imgBanner}" alt="Erro ao carregar imagem">
-    </div>`
+    </div>`;
 
     for (let i = 0; i < numeroDePerguntas; i++) {
 
@@ -77,16 +70,66 @@ function exibirNaTela() {
         <h2 class="pergunta">${perguntasDoQuiz[i].title}</h2>
         </div>
         <div class="alternativas cor">
-        <div class="filtro hiden"></div>`
+        <div class="filtro hiden"></div>`;
 
-        let alternativas=document.querySelector(`.tela-2 .controle${i} .alternativas`)
+        let alternativas=document.querySelector(`.tela-2 .controle${i} .alternativas`);
+        let respostas = perguntasDoQuiz[i].answers;
+        respostas = respostas.sort(comparador);
 
-        for (let j = 0; j < perguntasDoQuiz[i].answers.length; j++) {
+        for (let j = 0; j < respostas.length; j++) {
 
-        alternativas.innerHTML+=`<div class="card ${perguntasDoQuiz[i].answers[j].isCorrectAnswer
-        }" onclick="selecionarAlternativa(this)"><img src="${perguntasDoQuiz[i].answers[j].image}" alt="Erro ao carregar imagem"><h3>${perguntasDoQuiz[i].answers[j].text}</h3></div>`
+        alternativas.innerHTML+=
+        `<div class="card ${respostas[j].isCorrectAnswer
+        }" onclick="selecionarAlternativa(this)"><img src="${respostas[j].image}" alt="Erro ao carregar imagem"><h3>${respostas[j].text}</h3></div>`;
             
         }
     }  
+    tela.innerHTML+=
+    `<button class="reiniciar">Reiniciar Quizz</button>
+    <p class="voltarHome">Voltar para Home</p>`
 }
     
+
+
+function mostrarResultado() {
+    gerarResultado();
+    montarResultado();
+   const resultadot2= document.querySelector('.tela-2 .resultado');
+   resultadot2.classList.remove('hiden');
+   resultadot2.scrollIntoView();
+}
+
+function gerarResultado() {
+    percentual = (100/numeroDePerguntas*acertos).toFixed(0);
+    let controle=0
+
+    for (let i =0; i < levelDoQuiz.length; i++) {
+
+        if (levelDoQuiz[i].minValue<=percentual && levelDoQuiz[i].minValue>=controle
+            ) {
+            faixaDeAcerto = levelDoQuiz[i]
+            controle = levelDoQuiz[i].minValue
+        } 
+    }
+}
+
+function montarResultado() {
+    document.querySelector('.tela-2 .reiniciar').remove()
+    document.querySelector('.tela-2 .voltarHome').remove()
+    
+    tela.innerHTML+=`<div class="resultado hiden">
+    <div class="percentualDeAcerto" >
+        <p>${percentual}% de acerto:${faixaDeAcerto.title}</p>
+    </div>
+        <div class="mid">
+          <img src="${faixaDeAcerto.image}" alt="Erro ao carregar img">
+          <p>${faixaDeAcerto.text}</p>
+        </div>
+  </div>
+ <button class="reiniciar">Reiniciar Quizz</button>
+ <p class="voltarHome">Voltar para Home</p>`
+}
+
+function comparador() {
+    return Math.random() - 0.5;
+}
