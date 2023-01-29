@@ -398,15 +398,15 @@ function gerarTelaQuizCriado(quizEnviado){
     <p class="nome-do-quiz-final">${quizEnviado.data.title}</p>`;
 
     const botaoQuizCriado = document.querySelector(".botao-acessar-quiz-criado");
-    botaoQuizCriado.onclick = () => {abrirQuizCriado(idQuizCriado)};
+    botaoQuizCriado.onclick = () => {abrirQuizCriado(quizEnviado.data.id)};
 
     const fotoQuizCriado = document.querySelector(".quiz-criado");
-    fotoQuizCriado.onclick = () => {abrirQuizCriado(idQuizCriado)};
+    fotoQuizCriado.onclick = () => {abrirQuizCriado(quizEnviado.data.id)};
 }
 
-function abrirQuizCriado(idrecebida){
-    console.log(idrecebida)
+function abrirQuizCriado(idRecebida){
+    console.log(idRecebida)
     document.querySelector(".tela-3").classList.add("hiden");
     document.querySelector(".tela-2").classList.remove("hiden");
-    iniciarQuiz(idrecebida);
+    iniciarQuiz(idRecebida);
 }
