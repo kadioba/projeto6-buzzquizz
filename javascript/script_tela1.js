@@ -45,7 +45,7 @@ function listarQuizzes(resposta){
                     let idQuizz = quizz.id;
             
                     let template = `
-                    <div class="quizz" onclick="iniciarQuiz(id)">
+                    <div class="quizz" onclick="iniciarQuiz(${idQuizz})">
                         <img src=${quizz.image}>
                         <p>${quizz.title}</p>
                     </div>`;
@@ -63,9 +63,11 @@ function listarQuizzes(resposta){
         for(let i = 0; i < resposta.data.length; i++){
 
             let quizz = resposta.data[i];
+
+            let idQuizz = quizz.id;
     
             let template = `
-            <div class="quizz" onclick="iniciarQuiz(id)">
+            <div class="quizz" onclick="iniciarQuiz(${idQuizz})">
                 <img src=${quizz.image}>
                 <p>${quizz.title}</p>
             </div>`;
