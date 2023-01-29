@@ -352,9 +352,6 @@ function enviarQuizServidor(){
 }
 
 function envioQuizSucesso(quizCriado){
-    // Guarda o id  no local storage
-    const idQuiz = quizCriado.data.id;
-    localStorage.setItem(`id${idQuiz}`, idQuiz);
 
     // Se foi enviado com sucesso, vai pra ultima pagina
     document.querySelector(".niveis-geral").classList.add("hiden");
@@ -367,8 +364,6 @@ function envioQuizSucesso(quizCriado){
 
     gerarTelaQuizCriado(quizCriado);
 
-    console.log("Envio com sucesso");
-    console.log(quizCriado);
 }
 
 function envioQuizFalha(dadosFalha){
@@ -378,7 +373,22 @@ function envioQuizFalha(dadosFalha){
 
 function gerarTelaQuizCriado(quizEnviado){
 
-    const idQuizCriado = quizEnviado.data.id;
+    // Envia o ID do quiz para o local storage
+    // PODE ENTRAR NA FUNCAO envioQuizSucesso
+    const arrayDeQuizzesNoServidorSerializados = localStorage.getItem("arrayQuizesUsuario");
+
+    if(arrayDeQuizzesNoServidorSerializados != null){
+        const arrayDeQuizzesNoServidorDeserializados = JSON.parse(arrayDeQuizzesNoServidorSerializados);
+        arrayDeQuizzesNoServidorDeserializados.push(quizEnviado.data.id);
+        localStorage.setItem("arrayQuizesUsuario", JSON.stringify(arrayDeQuizzesNoServidorDeserializados));
+    }
+
+    else{
+        const arrayDeQuizzesDeserializados = [];
+        arrayDeQuizzesDeserializados.push(quizEnviado.data.id);
+        localStorage.setItem("arrayQuizesUsuario", JSON.stringify(arrayDeQuizzesDeserializados));
+    }
+
 
     // Selecionar a div que tem a foto e texto
     const elementoQuizEnviado = document.querySelector(".quiz-criado");
@@ -395,6 +405,7 @@ function gerarTelaQuizCriado(quizEnviado){
 }
 
 function abrirQuizCriado(idrecebida){
+    console.log(idrecebida)
     document.querySelector(".tela-3").classList.add("hiden");
     document.querySelector(".tela-2").classList.remove("hiden");
     iniciarQuiz(idrecebida);
