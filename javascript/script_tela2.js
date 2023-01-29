@@ -1,16 +1,20 @@
-let acertos=0;
-let respondidos=0;
+let acertos=0;  
+let respondidos=0; 
 let numeroDePerguntas=0;
-let perguntasDoQuiz=[];
+let perguntasDoQuiz=[]; 
 let levelDoQuiz=[];
 let faixaDeAcerto;
 let titulo;
 let imgBanner;
 let percentual;
+let idQuizAtual;
 const tela =document.querySelector('.tela-2');
 
 
 function iniciarQuiz(id) {
+   const tela1= document.querySelector('.tela-1')
+   tela1.classList.add('hiden')
+   tela.classList.remove('hiden')
     
 const dados = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${id}`);
     dados.then(salvarDados);
@@ -24,6 +28,7 @@ function salvarDados(dados) {
    titulo = dados.data.title;
    imgBanner =dados.data.image;
    numeroDePerguntas = perguntasDoQuiz.length;
+   idQuizAtual=dados.data.id
    exibirNaTela();
 }
 
@@ -41,10 +46,10 @@ function selecionarAlternativa(elemento) {
         acertos++;
     }
     if (respondidos === numeroDePerguntas) {
-     setTimeout(mostrarResultado,2000);
+     mostrarResultado();
     }else{
-         setTimeout(()=>ProximaQuestBox.scrollIntoView(),2000);
-         setTimeout(()=>window.scrollBy(0,-80),2010);
+         setTimeout(()=>ProximaQuestBox.scrollIntoView({behavior:"smooth"}),2000);
+         //setTimeout(()=>window.scrollBy(0,-80),2010);
 }
 }
 
@@ -52,7 +57,6 @@ function selecionarAlternativa(elemento) {
 
 function exibirNaTela() {
     
-    console.log(tela);
     tela.innerHTML='';
 
     tela.innerHTML=`<div class="banner">
@@ -85,8 +89,8 @@ function exibirNaTela() {
         }
     }  
     tela.innerHTML+=
-    `<button class="reiniciar">Reiniciar Quizz</button>
-    <p class="voltarHome">Voltar para Home</p>`
+    `<button onclick="reiniciarQuiz()" class="reiniciar">Reiniciar Quizz</button>
+    <p onclick="voltarParaHome()" class="voltarHome">Voltar para Home</p>`
 }
     
 
@@ -96,7 +100,7 @@ function mostrarResultado() {
     montarResultado();
    const resultadot2= document.querySelector('.tela-2 .resultado');
    resultadot2.classList.remove('hiden');
-   resultadot2.scrollIntoView();
+   setTimeout(()=>resultadot2.scrollIntoView({behavior: "smooth"}),2000)
 }
 
 function gerarResultado() {
@@ -126,10 +130,21 @@ function montarResultado() {
           <p>${faixaDeAcerto.text}</p>
         </div>
   </div>
- <button class="reiniciar">Reiniciar Quizz</button>
- <p class="voltarHome">Voltar para Home</p>`
+ <button onclick="reiniciarQuiz()" class="reiniciar">Reiniciar Quizz</button>
+ <p onclick="voltarParaHome()" class="voltarHome">Voltar para Home</p>`
 }
 
 function comparador() {
     return Math.random() - 0.5;
+}
+
+function voltarParaHome() {
+    window.location.reload(true)
+}
+
+function reiniciarQuiz() {
+    acertos=0
+    respondidos=0
+    iniciarQuiz(idQuizAtual)
+    tela.scrollIntoView({behavior: "smooth"})
 }
