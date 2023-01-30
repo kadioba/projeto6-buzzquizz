@@ -244,7 +244,7 @@ function gerarInputNiveis(){
             <div class=" nivel nivel-${i} selecionado" onclick="abrirInputNiveis(this)">
                 <div class="nivel-topo">
                     <h2>Nível ${i}</h2>
-                    <img src="./imagens/Vector.png" alt="" class="icone-nivel hide">
+                    <img src="./imagens/Vector.png" alt="" class="icone-nivel hiden">
                 </div>
                 <div class="nivel-dados">
                     <input type="text" class="titulo-nivel" placeholder="Título do nível">
@@ -409,4 +409,11 @@ function abrirQuizCriado(idRecebida){
     document.querySelector(".tela-3").classList.add("hiden");
     document.querySelector(".tela-2").classList.remove("hiden");
     iniciarQuiz(idRecebida);
+}
+
+function voltarParaHome(){
+    document.querySelector(".quiz-pronto").classList.add("hiden");
+    document.querySelector(".tela-3").classList.add("hiden");
+    document.querySelector(".tela-1").classList.remove("hiden");
+
 }
