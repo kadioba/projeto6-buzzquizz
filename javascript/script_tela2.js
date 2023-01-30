@@ -25,7 +25,6 @@ function iniciarQuiz(id) {
 
 
 function salvarDados(dados) {
-    console.log(dados.data);
     perguntasDoQuiz = dados.data.questions;
     levelDoQuiz = dados.data.levels;
     titulo = dados.data.title;
