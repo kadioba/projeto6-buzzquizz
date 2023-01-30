@@ -72,7 +72,7 @@ function exibirNaTela() {
 
         tela.innerHTML += `
         <div class="questBox controle${i}">
-        <div class="top">
+        <div style= 'background-color:${perguntasDoQuiz[i].color}' class="top">
         <h2 class="pergunta">${perguntasDoQuiz[i].title}</h2>
         </div>
         <div class="alternativas cor">
