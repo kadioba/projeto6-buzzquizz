@@ -415,4 +415,5 @@ function voltarParaHomeTelaFinal(){
     document.querySelector(".quiz-pronto").classList.add("hiden");
     document.querySelector(".tela-3").classList.add("hiden");
     document.querySelector(".tela-1").classList.remove("hiden");
+    window.location.reload();
 }

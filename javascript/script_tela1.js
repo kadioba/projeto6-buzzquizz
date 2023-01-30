@@ -4,7 +4,7 @@ function criarQuiz(){
     const tela3InfoQuiz = document.querySelector(".tela-3 .info-quiz");
     tela1.classList.add("hiden");
     tela3.classList.remove("hiden");
-    tela3InfoQuiz.classList.remove("hiden");   
+    tela3InfoQuiz.classList.remove("hiden"); 
 }
 function listarQuizzes(resposta){
     console.log(resposta);
