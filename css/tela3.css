@@ -172,12 +172,13 @@ button{
     position: relative;
     width: 500px;
     height: 266px;
-}
+background-color: #000000
+;}
 
 .quiz-pronto img{
     width: 500px;
     height: 266px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .nome-do-quiz-final{
@@ -220,8 +221,13 @@ button{
         width: 100%;
     }
     .quiz-pronto div{
-        width: 90%;
-        height: 181px;
+        width: 90vw;
+        height: 43vw;
+    }
+
+    .quiz-pronto img{
+        width: 90vw;
+        height: 43vw;
     }
 
     .botao-acessar-quiz-criado{
