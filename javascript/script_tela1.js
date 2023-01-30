@@ -4,16 +4,8 @@ function criarQuiz(){
     const tela3InfoQuiz = document.querySelector(".tela-3 .info-quiz");
     tela1.classList.add("hiden");
     tela3.classList.remove("hiden");
-    tela3InfoQuiz.classList.remove("hiden");
-    
+    tela3InfoQuiz.classList.remove("hiden");   
 }
-function abrirPaginaDeUmQuiz(){
-    const tela1 = document.querySelector(".tela-1");
-    const tela2 = document.querySelector(".tela-2");
-    tela1.classList.add("hiden");
-    tela2.classList.remove("hiden");
-}
-
 function listarQuizzes(resposta){
     console.log(resposta);
     //Acessar a chave arrayQuizesUsuario e armazenar o valor (string) em uma variável e transformar a string em um array
@@ -30,39 +22,53 @@ function listarQuizzes(resposta){
     const elementoListaCriada = document.querySelector(seletoresListaCriada);
 
     if (listaDeIdsDoUsuario !== null){
-        elementoListaVazia.classList.add("hiden");
-        elementoListaCriada.classList.remove("hiden");
-    }
-    //Percorrer a lista de quizzes e verificar se o id de cada quiz é igual ao id dos quizzes criados pelo usuário
-    for(let i = 0; i < resposta.data.length; i++){
+            elementoListaVazia.classList.add("hiden");
+            elementoListaCriada.classList.remove("hiden");
+    
+        //Percorrer a lista de quizzes e verificar se o id de cada quiz é igual ao id dos quizzes criados pelo usuário
+        for(let j = 0; j < listaDeIdsDoUsuario.length; j++){
 
-        let quizz = resposta.data[i];
+            let idQuizzDoUsuario = listaDeIdsDoUsuario[j];
+                
+            for(let i = 0; i < resposta.data.length; i++){
 
-        let idQuizz = quizz.id;
-
-        let template = `
-        <div class="quizz" onclick="abrirPaginaDeUmQuiz()">
-            <img src=${quizz.image}>
-            <p>${quizz.title}</p>
-        </div>`;
-         //listar na tela todos os quizzes criados pelo usuário e os demais quizzes
-        elementoTodosOsQuizzes.innerHTML += template;
-
-        if(listaDeIdsDoUsuario !== null){
-
-            for(let j = 0; j < listaDeIdsDoUsuario.length; j++){
-
-                let idQuizzDoUsuario = listaDeIdsDoUsuario[j];
+                    let quizz = resposta.data[i];
+            
+                    let idQuizz = quizz.id;
+            
+                    let template = `
+                    <div class="quizz" onclick="iniciarQuiz(${idQuizz})">
+                        <img src=${quizz.image}>
+                        <p>${quizz.title}</p>
+                    </div>`;
 
                 if(idQuizz === idQuizzDoUsuario){
                     elementoQuizzesDoUsuario.innerHTML += template;
                 }
+                else if(j === 0){
+                        elementoTodosOsQuizzes.innerHTML += template;  
+                    }
+                }
             }
+        }
+        else {
+        for(let i = 0; i < resposta.data.length; i++){
+
+            let quizz = resposta.data[i];
+
+            let idQuizz = quizz.id;
+    
+            let template = `
+            <div class="quizz" onclick="iniciarQuiz(${idQuizz})">
+                <img src=${quizz.image}>
+                <p>${quizz.title}</p>
+            </div>`;
+
+            elementoTodosOsQuizzes.innerHTML += template;
+
         }
     }
 }
-
-
 function tratarErroAoObterQuizzes(erro){
     console.log(erro);
     alert("Erro ao obter a lista de quizzes do servidor! Tente novamente mais tarde. Status code: "+erro.response.status);

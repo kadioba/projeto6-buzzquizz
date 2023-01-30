@@ -25,7 +25,6 @@ function iniciarQuiz(id) {
 
 
 function salvarDados(dados) {
-    console.log(dados.data);
     perguntasDoQuiz = dados.data.questions;
     levelDoQuiz = dados.data.levels;
     titulo = dados.data.title;
@@ -72,7 +71,7 @@ function exibirNaTela() {
 
         tela.innerHTML += `
         <div class="questBox controle${i}">
-        <div class="top">
+        <div style= 'background-color:${perguntasDoQuiz[i].color}' class="top">
         <h2 class="pergunta">${perguntasDoQuiz[i].title}</h2>
         </div>
         <div class="alternativas cor">
@@ -80,7 +79,7 @@ function exibirNaTela() {
 
         let alternativas = document.querySelector(`.tela-2 .controle${i} .alternativas`);
         let respostas = perguntasDoQuiz[i].answers;
-        respostas = respostas.sort(comparador);
+        respostas = respostas.sort(()=>Math.random() - 0.5);
 
         for (let j = 0; j < respostas.length; j++) {
 
@@ -101,7 +100,6 @@ function mostrarResultado() {
     gerarResultado();
     montarResultado();
     const resultadot2 = document.querySelector('.tela-2 .resultado');
-    resultadot2.classList.remove('hiden');
     setTimeout(() => resultadot2.scrollIntoView({ behavior: "smooth" }), 2000);
 }
 
@@ -127,7 +125,7 @@ function montarResultado() {
     document.querySelector('.tela-2 .reiniciar').remove();
     document.querySelector('.tela-2 .voltarHome').remove();
 
-    tela.innerHTML += `<div class="resultado hiden">
+    tela.innerHTML += `<div class="resultado">
     <div class="percentualDeAcerto" >
         <p>${percentual}% de acerto: ${faixaDeAcerto.title}</p>
     </div>
@@ -138,12 +136,6 @@ function montarResultado() {
   </div>
  <button onclick="reiniciarQuiz()" class="reiniciar">Reiniciar Quizz</button>
  <p onclick="voltarParaHome()" class="voltarHome">Voltar para Home</p>`;
-}
-
-
-
-function comparador() {
-    return Math.random() - 0.5;
 }
 
 
