@@ -4,16 +4,8 @@ function criarQuiz(){
     const tela3InfoQuiz = document.querySelector(".tela-3 .info-quiz");
     tela1.classList.add("hiden");
     tela3.classList.remove("hiden");
-    tela3InfoQuiz.classList.remove("hiden");
-    
+    tela3InfoQuiz.classList.remove("hiden");   
 }
-function abrirPaginaDeUmQuiz(){
-    const tela1 = document.querySelector(".tela-1");
-    const tela2 = document.querySelector(".tela-2");
-    tela1.classList.add("hiden");
-    tela2.classList.remove("hiden");
-}
-
 function listarQuizzes(resposta){
     console.log(resposta);
     //Acessar a chave arrayQuizesUsuario e armazenar o valor (string) em uma variável e transformar a string em um array
